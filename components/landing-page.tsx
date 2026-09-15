@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Image from 'next/image'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { Wifi, Shield, Headphones, Zap, MapPin, CheckCircle, Send, Phone, ArrowRight, Star, Users, Clock, ChevronDown, Building2, Home as HomeIcon, Monitor, Gamepad2, Instagram, Facebook } from 'lucide-react'
 
@@ -267,103 +266,109 @@ export default function LandingPage() {
       </nav>
 
       {/* HERO SECTION */}
-      <section id="hero" ref={heroRef} className="relative min-h-[100vh] flex items-center overflow-hidden">
-        <motion.div style={{ y: heroY }} className="absolute inset-0">
-          <Image
-            src="https://cdn.abacus.ai/images/05d32508-61aa-4ff9-9aaa-b1eceb514fd9.png"
-            alt="Red de telecomunicaciones Inter Red"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-          <div className="absolute inset-0 bg-gradient-to-r from-red-900/30 via-transparent to-transparent" />
-        </motion.div>
+      <section id="hero" ref={heroRef} className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center overflow-hidden bg-gray-950 pt-20 pb-16 lg:py-28">
+        {/* Background: cinematic dark with red glow orbs & subtle grid */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-gray-950" />
+          {/* Subtle grid pattern for desktop texture */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
+          {/* Glowing ambient lights */}
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] lg:w-[1100px] h-[400px] sm:h-[550px] bg-red-600/10 rounded-full blur-[140px] sm:blur-[180px]" />
+          <div className="absolute -bottom-20 left-10 w-[350px] lg:w-[500px] h-[350px] bg-red-950/20 rounded-full blur-[120px]" />
+          <div className="absolute top-10 right-10 w-[300px] lg:w-[450px] h-[300px] bg-red-700/10 rounded-full blur-[120px]" />
+        </div>
 
-        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 pt-24 pb-16">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
-                <MapPin className="w-4 h-4 text-red-400" />
-                <span className="text-white/90 text-sm font-medium">Departamento Choya, Santiago del Estero</span>
-              </div>
-            </motion.div>
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-[1200px] w-full mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-red-500/30 bg-red-500/10 backdrop-blur-md mb-6 sm:mb-8 shadow-lg shadow-red-950/30">
+              <MapPin className="w-4 h-4 text-[#E30613] shrink-0" />
+              <span className="text-white/95 text-xs sm:text-sm font-medium tracking-wide">Departamento Choya, Santiago del Estero</span>
+            </div>
+          </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-6"
-            >
-              Internet de
-              <span className="block text-[#E30613]">Alta Velocidad</span>
-              para tu Zona
-            </motion.h1>
+          {/* Heading with responsive line balancing */}
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-black text-white tracking-tight leading-[1.12] sm:leading-[1.1] mb-6 max-w-4xl lg:max-w-5xl"
+          >
+            Internet de{' '}
+            <span className="text-[#E30613] inline-block drop-shadow-[0_0_35px_rgba(227,6,19,0.35)]">
+              Alta Velocidad
+            </span>{' '}
+            <span className="inline sm:block md:inline">para tu Zona</span>
+          </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="text-lg sm:text-xl text-white/80 mb-8 max-w-xl leading-relaxed"
-            >
-              Conectate al mundo de Internet.
-            </motion.p>
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-base sm:text-lg md:text-xl text-gray-300/90 mb-8 sm:mb-10 max-w-2xl lg:max-w-3xl leading-relaxed font-normal"
+          >
+            Conectate al mundo digital con fibra óptica, ultra baja latencia y la mayor estabilidad garantizada para tu hogar y negocio.
+          </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.45 }}
-              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none"
+          >
+            <button
+              onClick={() => handleWhatsApp()}
+              className="w-full sm:w-auto group px-8 sm:px-10 py-4 bg-[#E30613] text-white rounded-xl text-base sm:text-lg font-bold hover:bg-red-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-red-500/30 flex items-center justify-center gap-3 hover:-translate-y-0.5"
             >
-              <button
-                onClick={() => handleWhatsApp()}
-                className="w-full sm:w-auto group px-8 py-4 bg-[#E30613] text-white rounded-xl text-lg font-bold hover:bg-red-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-red-500/25 flex items-center justify-center gap-3"
-              >
-                <WhatsAppIcon className="w-5 h-5" />
-                Quiero Conectarme
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button
-                onClick={() => scrollToSection('planes')}
-                className="w-full sm:w-auto px-8 py-4 glass text-white rounded-xl text-lg font-semibold hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                Ver Planes
-                <ChevronDown className="w-5 h-5" />
-              </button>
-            </motion.div>
+              <WhatsAppIcon className="w-5 h-5" />
+              <span>Quiero Conectarme</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={() => scrollToSection('planes')}
+              className="w-full sm:w-auto px-8 sm:px-10 py-4 border border-white/20 hover:border-white/40 text-white bg-white/5 hover:bg-white/10 backdrop-blur-sm rounded-xl text-base sm:text-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-0.5"
+            >
+              <span>Ver Planes</span>
+              <ChevronDown className="w-5 h-5" />
+            </button>
+          </motion.div>
 
-            {/* Quick stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6 }}
-              className="grid grid-cols-3 gap-4 sm:gap-8 mt-12 max-w-lg"
-            >
+          {/* Stats bar - expansive & clean for PC / mobile */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="mt-12 sm:mt-16 w-full max-w-xl lg:max-w-3xl"
+          >
+            <div className="grid grid-cols-3 gap-2 sm:gap-6 bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow-2xl">
               {[
-                { value: '24/7', label: 'Soporte' },
-                { value: '99.5%', label: 'Uptime' },
-                { value: 'Local', label: 'Cobertura' },
+                { value: '24/7', label: 'SOPORTE', sub: 'Dedicado' },
+                { value: '99.5%', label: 'UPTIME', sub: 'Garantizado' },
+                { value: 'Local', label: 'COBERTURA', sub: 'Todo Choya' },
               ]?.map((stat: any, i: number) => (
-                <div key={i} className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-white">{stat?.value}</div>
-                  <div className="text-xs sm:text-sm text-white/60 mt-1">{stat?.label}</div>
+                <div key={i} className={`text-center px-1 sm:px-4 ${i !== 0 ? 'border-l border-white/10' : ''}`}>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">{stat?.value}</div>
+                  <div className="text-[10px] sm:text-xs text-gray-400 uppercase font-medium tracking-wider mt-1">{stat?.label}</div>
+                  <div className="text-[10px] sm:text-xs text-[#E30613] font-bold mt-0.5">{stat?.sub}</div>
                 </div>
               ))}
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden sm:block pointer-events-none"
         >
-          <ChevronDown className="w-8 h-8 text-white/50" />
+          <ChevronDown className="w-7 h-7 text-white/40" />
         </motion.div>
       </section>
 
