@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server'
-import { prisma } from '@/lib/db'
+import { getPrisma } from '@/lib/db'
 import fs from 'fs/promises'
 import path from 'path'
+
+export const dynamic = 'force-dynamic'
 
 // Fallback JSON file path
 const fallbackFile = path.join(process.cwd(), 'data', 'requests.json')
@@ -26,15 +28,20 @@ async function readFallbackData() {
 
 async function writeFallbackData(data: any) {
   await ensureDataDir()
-  await fs.writeFile(fallbackFile, JSON.stringify(data, null, 2))
+  try {
+    await fs.writeFile(fallbackFile, JSON.stringify(data, null, 2))
+  } catch (e) {
+    // Readonly filesystem fallback
+  }
 }
 
 export async function POST(req: Request) {
   try {
     const body = await req.json()
+    const prisma = getPrisma()
     
-    // Attempt Prisma if DB url exists
-    if (process.env.DATABASE_URL) {
+    // Attempt Prisma if DB exists
+    if (prisma) {
       try {
         const newReq = await prisma.feasibilityRequest.create({ data: body })
         return NextResponse.json(newReq)
@@ -62,14 +69,14 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    // Simple admin PIN check (e.g. from header)
     const pin = req.headers.get('x-admin-pin')
     const adminPin = process.env.ADMIN_PIN || '1234'
     if (pin !== adminPin) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    if (process.env.DATABASE_URL) {
+    const prisma = getPrisma()
+    if (prisma) {
       try {
         const requests = await prisma.feasibilityRequest.findMany({
           orderBy: { createdAt: 'desc' }
@@ -98,8 +105,9 @@ export async function PATCH(req: Request) {
     }
 
     const { id, status } = await req.json()
+    const prisma = getPrisma()
 
-    if (process.env.DATABASE_URL) {
+    if (prisma) {
       try {
         const updated = await prisma.feasibilityRequest.update({
           where: { id },
@@ -138,7 +146,8 @@ export async function DELETE(req: Request) {
     const id = searchParams.get('id')
     if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 })
 
-    if (process.env.DATABASE_URL) {
+    const prisma = getPrisma()
+    if (prisma) {
       try {
         await prisma.feasibilityRequest.delete({ where: { id } })
         return NextResponse.json({ success: true })

@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import fs from 'fs/promises'
 import path from 'path'
 
+export const dynamic = 'force-dynamic'
+
 const promoFile = path.join(process.cwd(), 'data', 'promotions.json')
 
 async function ensureDataDir() {
