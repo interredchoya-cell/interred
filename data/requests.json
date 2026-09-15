@@ -1,0 +1,20 @@
+[
+  {
+    "id": "xp93i",
+    "name": "manu",
+    "phone": "3854202233",
+    "address": "san juan 20",
+    "status": "HAS_COVERAGE",
+    "createdAt": "2026-06-18T08:22:51.137Z"
+  },
+  {
+    "id": "n1qnih",
+    "name": "jorge",
+    "phone": "3854208563",
+    "address": "tucuman 21",
+    "latitude": -28.6377,
+    "longitude": -65.1288,
+    "status": "PENDING",
+    "createdAt": "2026-06-18T08:41:49.517Z"
+  }
+]

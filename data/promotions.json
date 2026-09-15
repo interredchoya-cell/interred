@@ -1,0 +1,16 @@
+[
+  {
+    "id": "promo-lanzamiento-2026",
+    "title": "¡Promo Especial de Bienvenida!",
+    "badge": "⚡ OFERTA POR TIEMPO LIMITADO",
+    "subtitle": "Conexión ultrarrápida al mejor precio de Choya",
+    "description": "Contratá cualquiera de nuestros planes hoy y obtené la instalación bonificada + 20% de descuento en tu primer mes de servicio.",
+    "discount": "20% OFF + Instalación Bonificada",
+    "planId": "plan-basico",
+    "startDate": "2026-09-01T00:00",
+    "endDate": "2026-10-31T23:59",
+    "buttonText": "Aprovechar Promo por WhatsApp",
+    "whatsappMessage": "Hola! Quiero aprovechar la Promo Especial por Tiempo Limitado de Inter Red.",
+    "active": true
+  }
+]

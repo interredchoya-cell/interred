@@ -1,0 +1,47 @@
+[
+  {
+    "id": "plan-basico",
+    "name": "Plan Básico",
+    "category": "Para hogares",
+    "speed": "30 Megas",
+    "price": "35.000",
+    "currency": "$",
+    "period": "/mes",
+    "features": [
+      "Ideal para hogares y uso diario",
+      "Streaming en HD sin cortes",
+      "Trabajo remoto y videollamadas fluidas",
+      "Navegación rápida en múltiples celulares",
+      "Soporte técnico local en Choya"
+    ],
+    "isRecommended": false,
+    "popularTag": "",
+    "buttonText": "Contratar Plan",
+    "theme": "light",
+    "active": true,
+    "order": 1
+  },
+  {
+    "id": "plan-empresarial",
+    "name": "Plan Empresarial",
+    "category": "Uso intensivo y comercios",
+    "speed": "60 Megas",
+    "price": "50.000",
+    "currency": "$",
+    "period": "/mes",
+    "features": [
+      "Para empresas, comercios y uso intensivo",
+      "Streaming en 4K Ultra HD sin interrupciones",
+      "Múltiples dispositivos y Smart TVs simultáneos",
+      "Gaming online con baja latencia",
+      "Prioridad máxima en soporte técnico",
+      "Velocidad superior garantizada"
+    ],
+    "isRecommended": true,
+    "popularTag": "⭐ Recomendado",
+    "buttonText": "Contratar Plan",
+    "theme": "dark",
+    "active": true,
+    "order": 2
+  }
+]
